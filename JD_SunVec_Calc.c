@@ -33,22 +33,21 @@ int main()
 			double UT1 = (JD-2451545)/36525;
 			double longMSUN = 280.4606184+36000.77005361*UT1;
 			double mSUN = 357.5277233+35999.05034*UT1;
-			double ecliptic = longMSUN+1.914666471*sin(mSUN)+0.918994643*sin(2*mSUN);
+			double ecliptic = longMSUN+1.914666471*sin(mSUN*pi/180)+0.918994643*sin(2*mSUN*pi/180);
 			double eccen = 23.439291-0.0130042*UT1;
 	
 			double x = cos(ecliptic*pi/180);
 			double y = cos(eccen*pi/180)*sin(ecliptic*pi/180);
 			double z = sin(eccen*pi/180)*sin(ecliptic*pi/180);
 		
-			printf("Julian Date: %lf\n", JD);
-			printf("X: %lf\n", x);
-			printf("Y: %lf\n", y);
-			printf("Z: %lf\n\n", z);
+			printf("Julian Date: %f\n", JD);
+			printf("X: %f\n", x);
+			printf("Y: %f\n", y);
+			printf("Z: %f\n\n", z);
 		}
 		else
 		{
 			printf("One or more incorrect values!\n");
-			exit(0);
 		}
 	}
 	return 0;
